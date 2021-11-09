@@ -2,9 +2,11 @@ import constants
 from copy import deepcopy
 
 players_list = deepcopy(constants.PLAYERS)
-Panthers = []
-Bandits = []
-Warriors = []
+team_list = {
+'Panthers': [],
+'Bandits': [],
+'Warriors': []
+}
 
 
 
@@ -32,29 +34,58 @@ def balance_teams():
 		if player['experience'] == False:
 			inexp_players.append(player)
 	for i, player in enumerate(exp_players):
-		if i <= 3:
-			Panthers.append(player)
-		if i > 3 and i <= 6:
-			Bandits.append(player)
-		if i > 6:
-			Warriors.append(player)
+		if i <= 2:
+			team_list['Panthers'].append(player)
+		if i > 2 and i <= 5:
+			team_list['Bandits'].append(player)
+		if i > 5:
+			team_list['Warriors'].append(player)
 	for i, player in enumerate(inexp_players):
-		if i <= 3:
-			Panthers.append(player)
-		if i > 3 and i <= 6:
-			Bandits.append(player)
-		if i > 6:
-			Warriors.append(player)
+		if i <= 2:
+			team_list['Panthers'].append(player)
+		if i > 2 and i <= 5:
+			team_list['Bandits'].append(player)
+		if i > 5:
+			team_list['Warriors'].append(player)
 
 
-def additional_stats():
+# number of inexperienced/experienced players, average height of players, guardians of team
+def additional_stats(team_name):
+	average_height = sum(team_list[team_name['height']]) / len(team_list[team_name['height']])
+	print('Average Height of Team:  {} inches'.format(average_height))
+
+
 	
+def main_menu():
+	print('\nWelcome to the Basketball Stats Tool!\n===== MENU =====')
+	choice_1 = input('\n - Choose from the options bellow... -\n > 1) Display Team Stats\n > 2) Quit\n\nEnter an option:  ')
+	if choice_1 == 1:
+		team_name = input('\n - Select from the teams below... -\n > 1) Panthers\n > 2) Bandits\n > 3) Warriors\n\nEnter an option:  ') - 1
+		if team_name == 0:
+			team_name = 'Panthers'
+		if team_name == 1:
+			team_name = 'Bandits'
+		if team_name == 2:
+			team_name = 'Warriors'
+		print('\n --- {} ---: \n----------'.format(team_name))
+		print('\n- Total players: {}'.format(len(team_list[team_name])))
+		names = []
+		for player in team_list[team_name]:
+			names.append(player['name'])
+		print('\n- Players on team:\n {}'.format(', '.join(names))+'\n\n')
+		choice_3 = input('\n- Choose from the options below...\n > 1) Additional Stats for the {}\n > 2) Return to Menu\n\nEnter an option:  '.format(team_name))
+		if choice_3 == 1:
+			additional_stats(team_name)
+
+			
+
+
 			
 
 if __name__ == "__main__":
 	clean_data()
 	balance_teams()
-	print(Panthers)
+	main_menu()
 
 
 
