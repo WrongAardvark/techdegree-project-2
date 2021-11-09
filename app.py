@@ -9,7 +9,7 @@ teams_list = deepcopy(constants.PLAYERS)
 def clean_data():
 	for player in players_list:
 		height = player['height'].removesuffix(" inches")
-		player['height'] = int(player['height'])
+		player['height'] = int(height[0])
 		if player['experience'] == 'YES':
 			player['experience'] = True
 		if player['experience'] == 'NO':
