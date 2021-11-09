@@ -2,7 +2,7 @@ import constants
 from copy import deepcopy
 
 players_list = deepcopy(constants.PLAYERS)
-teams_list = deepcopy(constants.PLAYERS)
+teams_list = deepcopy(constants.TEAMS)
 
 
 #clean data function
@@ -17,7 +17,8 @@ def clean_data():
 
 
 #balance teams function
-def balance_teams
+def balance_teams():
+	
 
 
 if __name__ == "__main__":
