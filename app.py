@@ -1,25 +1,19 @@
 import constants
-import copy
+from copy import deepcopy
+
+players_list = deepcopy(constants.PLAYERS)
+teams_list = deepcopy(constants.PLAYERS)
 
 
 #clean data function
 def clean_data():
-	#create new list so as not to overwrite 'constants.py'
-	#also change information into usable integers and booleans
-	clean_list = copy.deepcopy(constants.PLAYERS)
-	loop_thru = 0
-	while loop_thru < len(constants.PLAYERS) :
-		clean_list[loop_thru]['height'] = clean_list[loop_thru]['height'].removesuffix(" inches")
-		clean_list[loop_thru]['height'] = int(clean_list[loop_start]['height'])
-
-		if clean_list[loop_thru]['experience'] == 'YES':
-			clean_list[loop_thru]['experience'] = True
-		else:
-			clean_list[loop_thru]['experience'] = False
-
-		loop_thru += 1
-	
-
+	for player in players_list:
+		height = player['height'].removesuffix(" inches")
+		player['height'] = int(player['height'])
+		if player['experience'] == 'YES':
+			player['experience'] = True
+		if player['experience'] == 'NO':
+			player['experience'] = False
 
 
 #balance teams function
@@ -27,4 +21,7 @@ def balance_teams
 
 
 if __name__ == "__main__":
+	clean_data()
+	print(players_list)
+
 
