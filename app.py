@@ -49,7 +49,7 @@ def balance_teams():
 			team_list['Warriors'].append(player)
 
 
-# number of inexperienced/experienced players, average height of players, guardians of team
+
 def additional_stats(team_name):
 	average_height = sum(team_list[team_name['height']]) / len(team_list[team_name['height']])
 	print('Average Height of Team:  {} inches'.format(average_height))
@@ -74,6 +74,7 @@ def main_menu():
 			names.append(player['name'])
 		print('\n- Players on team:\n {}'.format(', '.join(names))+'\n\n')
 		choice_3 = input('\n- Choose from the options below...\n > 1) Additional Stats for the {}\n > 2) Return to Menu\n\nEnter an option:  '.format(team_name))
+		# Additional stats number of inexperienced/experienced players, average height of players, guardians of team
 		if choice_3 == 1:
 			additional_stats(team_name)
 
